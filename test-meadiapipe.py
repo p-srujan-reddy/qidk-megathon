@@ -9,7 +9,7 @@ from pathlib import Path
 import os
 import time
 
-from qai_hub_models.models.mediapipe_pose.app import MediaPipePoseApp
+from app import MediaPipePoseApp
 from qai_hub_models.models.mediapipe_pose.model import (
     MODEL_ASSET_VERSION,
     MODEL_ID,
@@ -17,6 +17,34 @@ from qai_hub_models.models.mediapipe_pose.model import (
 )
 from qai_hub_models.utils.args import add_output_dir_arg
 from qai_hub_models.utils.asset_loaders import CachedWebModelAsset
+
+POSE_LANDMARK_CONNECTIONS = [
+    (0, 1),
+    (1, 2),
+    (2, 3),
+    (3, 7),
+    (0, 4),
+    (4, 5),
+    (5, 6),
+    (6, 8),
+    (9, 10),
+    (11, 13),
+    (13, 15),
+    (15, 17),
+    (17, 19),
+    (19, 15),
+    (15, 21),
+    (12, 14),
+    (14, 16),
+    (16, 18),
+    (18, 20),
+    (20, 16),
+    (16, 22),
+    (11, 12),
+    (12, 24),
+    (24, 23),
+    (23, 11),
+]
 
 def process_video(app: MediaPipePoseApp, input_path: str, output_path: str, frames_dir: str) -> None:
     """
@@ -125,7 +153,7 @@ def main(is_test: bool = False, video_path: str = ''):
     
     # Load app
     app = MediaPipePoseApp(
-        MediaPipePose.from_pretrained(), args.score_threshold, args.iou_threshold
+        MediaPipePose.from_pretrained(), args.score_threshold, args.iou_threshold,
     )
     print("Model loaded successfully")
 
