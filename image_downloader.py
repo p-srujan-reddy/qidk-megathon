@@ -1,5 +1,5 @@
 import os
-from dotenv import load_load
+from dotenv import load_dotenv
 import requests
 from pathlib import Path
 from PIL import Image
