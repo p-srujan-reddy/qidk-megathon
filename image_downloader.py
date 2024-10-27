@@ -130,16 +130,12 @@ class GoogleImageDownloader:
 def main():
     # Example usage
     keywords = [
-        "Mountain landscape",
-        "Ocean sunset",
-        "Forest wildlife",
-        "Urban architecture",
-        "Desert dunes"
+        "yoga pose",
     ]
     
     try:
         downloader = GoogleImageDownloader()
-        downloader.download_images_for_keywords(keywords, images_per_keyword=3)
+        downloader.download_images_for_keywords(keywords, images_per_keyword=50)
         print("\nImage download process completed!")
         
     except Exception as e:

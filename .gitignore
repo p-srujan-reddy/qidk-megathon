@@ -162,6 +162,6 @@ cython_debug/
 #.idea/
 
 qidk/
-pose detection/
-frames/
 ai-hub-models-main/
+.env
+pose detection/
